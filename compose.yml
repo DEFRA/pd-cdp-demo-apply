@@ -44,8 +44,10 @@ services:
 
 ################################################################################
 
-  your-frontend:
-    build: ./
+  pd-cdp-demo-apply:
+    build:
+      context: .
+      target: development
     ports:
       - '3000:3000'
     links:
@@ -66,6 +68,8 @@ services:
       USE_SINGLE_INSTANCE_CACHE: true
     networks:
       - cdp-tenant
+    volumes:
+      - './src:/home/node/src'
 
   # your-backend:
   #   image: defradigital/your-backend:${YOUR_BACKEND_VERSION:-latest}

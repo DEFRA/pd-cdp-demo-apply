@@ -30,7 +30,7 @@ const config = convict({
   serviceName: {
     doc: 'Applications Service Name',
     format: String,
-    default: 'pd-cdp-demo-apply'
+    default: 'CDP Demo Service'
   },
   root: {
     doc: 'Project root',
