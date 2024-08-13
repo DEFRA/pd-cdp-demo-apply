@@ -1,5 +1,6 @@
 import path from 'path'
 import hapi from '@hapi/hapi'
+import joi from 'joi'
 
 import { config } from '~/src/config/index.js'
 import { nunjucksConfig } from '~/src/config/nunjucks/index.js'
@@ -45,6 +46,8 @@ async function createServer() {
       }
     ]
   })
+
+  server.validator(joi)
 
   await server.register(requestLogger)
 
