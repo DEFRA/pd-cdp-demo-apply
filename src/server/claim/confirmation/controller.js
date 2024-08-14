@@ -4,9 +4,8 @@
  */
 const confirmationController = {
   handler: (request, h) => {
-    return h.view('claim/confirmation/index', {
-      reference: 'MINE123'
-    })
+    const reference = request.yar.get('reference')
+    return h.view('claim/confirmation/index', { reference })
   }
 }
 
