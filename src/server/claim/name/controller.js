@@ -6,7 +6,8 @@ import schema from './schema.js'
  */
 const nameControllerGet = {
   handler: (request, h) => {
-    return h.view('claim/name/index')
+    const name = request.yar.get('name')
+    return h.view('claim/name/index', { name })
   }
 }
 
@@ -26,6 +27,10 @@ const nameControllerPost = {
       }
     },
     handler: async (request, h) => {
+      request.yar.set('name', request.payload.name)
+      const timestamp = new Date().getUTCMilliseconds()
+      const reference = `MINE${timestamp}`
+      request.yar.set('reference', reference)
       return h.redirect('/claim/confirmation')
     }
   }
