@@ -31,6 +31,7 @@ const nameControllerPost = {
       const timestamp = new Date().getUTCMilliseconds()
       const reference = `MINE${timestamp}`
       request.yar.set('reference', reference)
+
       return h.redirect('/claim/confirmation')
     }
   }

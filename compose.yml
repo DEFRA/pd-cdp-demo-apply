@@ -31,15 +31,15 @@ services:
     networks:
       - cdp-tenant
 
-  mongodb:
-    image: mongo:6.0.13
-    networks:
-      - cdp-tenant
-    ports:
-      - 27017:27017
-    volumes:
-      - mongodb-data:/data
-    restart: always
+  # mongodb:
+  #   image: mongo:6.0.13
+  #   networks:
+  #     - cdp-tenant
+  #   ports:
+  #     - 27017:27017
+  #   volumes:
+  #     - mongodb-data:/data
+  #   restart: always
 
 ################################################################################
 
@@ -49,6 +49,7 @@ services:
       target: development
     ports:
       - '3000:3000'
+      - '9229:9229'
     links:
       - 'localstack:localstack'
       - 'redis:redis'
@@ -65,6 +66,7 @@ services:
       REDIS_HOST: redis
       LOCALSTACK_ENDPOINT: http://localstack:4566
       USE_SINGLE_INSTANCE_CACHE: true
+      CLAIM_HOST: http://pd-cdp-demo-claim:3001
     networks:
       - cdp-tenant
     volumes:
