@@ -1,4 +1,6 @@
+import { config } from '~/src/config/index.js'
 import schema from './schema.js'
+import Wreck from '@hapi/wreck'
 
 /**
  * A GDS styled example home page controller.
@@ -31,6 +33,14 @@ const nameControllerPost = {
       const timestamp = new Date().getUTCMilliseconds()
       const reference = `MINE${timestamp}`
       request.yar.set('reference', reference)
+
+      await Wreck.post(`${config.get('claimHost')}/claim`, {
+        payload: {
+          claimId: reference,
+          name: request.payload.name
+        }
+      })
+
       return h.redirect('/claim/confirmation')
     }
   }

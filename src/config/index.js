@@ -147,6 +147,12 @@ const config = convict({
       default: process.env.NODE_ENV !== 'production',
       env: 'USE_SINGLE_INSTANCE_CACHE'
     }
+  },
+  claimHost: {
+    doc: 'Hostname of claim service',
+    format: String,
+    default: '',
+    env: 'CLAIM_HOST'
   }
 })
 
