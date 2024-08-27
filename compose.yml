@@ -67,6 +67,7 @@ services:
       LOCALSTACK_ENDPOINT: http://localstack:4566
       USE_SINGLE_INSTANCE_CACHE: true
       CLAIM_HOST: http://pd-cdp-demo-claim:3001
+      PAYMENT_HOST: http://pd-cdp-demo-claim:5026
     networks:
       - cdp-tenant
     volumes:

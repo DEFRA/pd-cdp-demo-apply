@@ -41,6 +41,13 @@ const nameControllerPost = {
         }
       })
 
+      await Wreck.post(`${config.get('paymentHost')}/claim`, {
+        payload: {
+          claimId: reference,
+          name: request.payload.name
+        }
+      })
+
       return h.redirect('/claim/confirmation')
     }
   }
