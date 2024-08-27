@@ -153,6 +153,12 @@ const config = convict({
     format: String,
     default: '',
     env: 'CLAIM_HOST'
+  },
+  paymentHost: {
+    doc: 'Hostname of payment service',
+    format: String,
+    default: '',
+    env: 'PAYMENT_HOST'
   }
 })
 
